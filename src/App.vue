@@ -2,8 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link>|
-      <router-link to="/static-map">Static Map</router-link>
-      <router-link to="/search-map">Search Map</router-link>
+      <router-link to="/static-map">Static Map</router-link>|
+      <router-link to="/search-map">Search Map</router-link>|
+      <router-link to="/navigation">Navigation</router-link>|
     </div>
     <router-view />
   </div>

@@ -12,10 +12,8 @@
       :key="coord.id"
       :coordinates="coord.center"
       :color="blue"
-      ><MglPopup
-        ><VCard>
-          <h3 class="popUp-text">{{ coord.place_name }}</h3></VCard
-        ></MglPopup
+      ><MglPopup>
+        <h3 class="popUp-text">{{ coord.place_name }}</h3></MglPopup
       ></MglMarker
     >
   </MglMap>

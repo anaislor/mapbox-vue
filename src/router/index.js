@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import SearchMap from "../views/SearchMap.vue";
+import Navigation from "../views/Navigation.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ const routes = [
     path: "/search-map",
     name: "search-map",
     component: SearchMap
+  },
+  {
+    path: "/navigation",
+    name: "navigation",
+    component: Navigation
   }
 ];
 

@@ -6,8 +6,15 @@ export default {
   getSearch: search_text => {
     return service
       .get(
-        `/geocoding/v5/mapbox.places/${search_text}.json?access_token=${process.env.VUE_APP_MAPBOX_API_KEY}`
+        `/geocoding/v5/mapbox.places/${search_text}.json?limit=10&proximity=2.3522,48.8566&access_token=${process.env.VUE_APP_MAPBOX_API_KEY}`
       )
-      .then(res => res);
+      .then(res => res.data.features);
+  },
+  getDirection: (origin, destination) => {
+    return service
+      .get(
+        `/directions/v5/mapbox/driving-traffic/${origin};${destination}?access_token=${process.env.VUE_APP_MAPBOX_API_KEY}`
+      )
+      .then(res => res.data.waypoints);
   }
 };

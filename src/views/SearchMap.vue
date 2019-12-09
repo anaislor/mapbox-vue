@@ -29,8 +29,7 @@ export default {
   methods: {
     getSearch(s) {
       MapBox.getSearch(s).then(res => {
-        console.log(res);
-        this.results = res.data.features;
+        this.results = res;
       });
     }
   }
