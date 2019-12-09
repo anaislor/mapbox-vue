@@ -8,8 +8,9 @@
       v-model="search"
       @change="GetSearch(search)"
     />
-    <Map></Map></div
-></template>
+    <Map />
+  </div>
+</template>
 
 <script>
 import MapBox from "@/api/mapBox.js";
@@ -25,18 +26,11 @@ export default {
     Map
   },
   methods: {
-    GetSearch(s) {
+    getSearch(s) {
       MapBox.GetSearch(s).then(res => console.log(res.data.features));
     }
   }
 };
 </script>
 
-<style>
-#map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-}
-</style>
+<style></style>

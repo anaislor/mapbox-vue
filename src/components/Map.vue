@@ -1,31 +1,33 @@
 <template>
-  <div>
-    <Mapbox
-      access-token="pk.eyJ1IjoiYW5haXNsb3IiLCJhIjoiY2szdHlxbml4MDdpaDNtcGszbHlrMG9wNyJ9.IS74VCKnAOg3X7cyiARsoQ"
-      :map-options="{
-        style: 'mapbox://styles/mapbox/light-v9',
-        center: [-96, 37.8],
-        zoom: 3
-      }"
-    /></div
-></template>
+  <div id="mapContainer">
+    <MglMap :accessToken="accessToken" :mapStyle="mapStyle" />
+  </div>
+</template>
 
 <script>
-import Mapbox from "mapbox-gl-vue";
-
+import Mapbox from "mapbox-gl";
+import { MglMap } from "vue-mapbox";
 export default {
+  components: {
+    MglMap
+  },
   data() {
     return {
-      token: process.env.VUE_APP_MAPBOX_API_KEY
+      accessToken: process.env.VUE_APP_MAPBOX_API_KEY,
+      mapStyle: "mapbox://styles/mapbox/streets-v11"
     };
   },
-  components: { Mapbox }
+  created() {
+    // We need to set mapbox-gl library here in order to use it in template
+    this.mapbox = Mapbox;
+  }
 };
 </script>
 
 <style>
-#map {
+#mapContainer {
+  margin-top: 50px;
   width: 100%;
-  height: 500px;
+  height: 600px;
 }
 </style>
