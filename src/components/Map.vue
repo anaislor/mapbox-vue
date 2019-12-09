@@ -1,15 +1,24 @@
 <template>
-  <div id="mapContainer">
-    <MglMap :accessToken="accessToken" :mapStyle="mapStyle" />
-  </div>
+  <MglMap id="map" :accessToken="accessToken" :mapStyle="mapStyle">
+    <MglNavigationControl position="top-right" />
+    <MglMarker
+      v-for="coord in POI"
+      :key="coord.id"
+      :coordinates="coord.center"
+      :color="blue"
+    />
+  </MglMap>
 </template>
 
 <script>
 import Mapbox from "mapbox-gl";
-import { MglMap } from "vue-mapbox";
+import { MglMap, MglMarker, MglNavigationControl } from "vue-mapbox";
 export default {
+  props: ["POI"],
   components: {
-    MglMap
+    MglMap,
+    MglMarker,
+    MglNavigationControl
   },
   data() {
     return {
@@ -25,9 +34,14 @@ export default {
 </script>
 
 <style>
-#mapContainer {
+#map {
   margin-top: 50px;
   width: 100%;
   height: 600px;
+  text-align: left;
+}
+.mapboxgl-canvas {
+  position: relative;
+  width: 100%;
 }
 </style>

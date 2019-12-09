@@ -6,9 +6,9 @@
       id="search"
       type="text"
       v-model="search"
-      @change="GetSearch(search)"
+      @change="getSearch(search)"
     />
-    <Map />
+    <Map :POI="results" />
   </div>
 </template>
 
@@ -19,7 +19,8 @@ import Map from "@/components/Map.vue";
 export default {
   data() {
     return {
-      search: ""
+      search: "",
+      results: []
     };
   },
   components: {
@@ -27,7 +28,10 @@ export default {
   },
   methods: {
     getSearch(s) {
-      MapBox.GetSearch(s).then(res => console.log(res.data.features));
+      MapBox.getSearch(s).then(res => {
+        console.log(res);
+        this.results = res.data.features;
+      });
     }
   }
 };
